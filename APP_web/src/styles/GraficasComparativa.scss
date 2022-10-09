@@ -1,0 +1,37 @@
+@import 'vars';
+
+.compare-info-container{
+    width: 100%;
+}
+
+.compare-info-container h1{
+    font-size: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+}
+  
+.compare-info-process{
+    width: 100%;
+    background-color: $color-background;
+    display: flex;
+    flex-direction: row;
+    margin: 0% 0% 0% 0%;
+    //align-items: row;
+    // overflow-x: scroll;
+    // scroll-snap-type: x proximity;
+    // overscroll-behavior-x: contain;
+    // margin: 0 auto;
+    // gap: 5rem;
+}
+
+.process-info-container{
+    width: 100%;
+    //max-width: 40rem;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+   }
+  
