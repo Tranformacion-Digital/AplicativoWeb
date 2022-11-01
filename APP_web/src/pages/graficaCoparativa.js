@@ -13,6 +13,7 @@ const GraficaComparativa = () => {
     const [dataProcesDerecha, setDataProceshDerecha]=useState();
 
     const dataSearchIzqLot = async () =>{
+        if(!serchKeyIzq)return
         await getRecordprocess(serchKeyIzq)
         .then(res=>{
             setDataProcesIzq(res)
@@ -23,7 +24,7 @@ const GraficaComparativa = () => {
     }
 
     const dataSearchDerLot = async () =>{
-        console.log('derecha',serchKeyDer)
+        if(!serchKeyDer) return
         await getRecordprocess(serchKeyDer)
         .then(res=>{
              console.log('graficas comparativas',res)
@@ -49,7 +50,9 @@ const GraficaComparativa = () => {
                             </span>
                             <div className="process-info-container">
                                 <GraficaLineaComponent
-                                    nameLine={!!dataProcesIzq && !!dataProcesIzq.lote ? dataProcesIzq.lote : undefined}
+                                    nameLine={[
+                                        {"name1":!!dataProcesIzq && !!dataProcesIzq.lote ? dataProcesIzq.lote :''}
+                                    ]}
                                      scores={!!dataProcesIzq && !!dataProcesIzq.datosTem ? dataProcesIzq.datosTem : undefined}
                                     labels={!!dataProcesIzq && !!dataProcesIzq.dataTime ? dataProcesIzq.dataTime : undefined}
                                 />
@@ -80,7 +83,9 @@ const GraficaComparativa = () => {
                             </span>
                             <div className="graphic-info-container">
                                 <GraficaLineaComponent
-                                    nameLine={!!dataProcesDerecha && !!dataProcesDerecha.lote ? dataProcesDerecha.lote : undefined}
+                                    nameLine={[
+                                        {"name1":!!dataProcesDerecha && !!dataProcesDerecha.lote ? dataProcesDerecha.lote :''}
+                                    ]}
                                      scores={!!dataProcesDerecha && !!dataProcesDerecha.datosTem ? dataProcesDerecha.datosTem : undefined}
                                     labels={!!dataProcesDerecha && !!dataProcesDerecha.dataTime ? dataProcesDerecha.dataTime : undefined}
                                 />

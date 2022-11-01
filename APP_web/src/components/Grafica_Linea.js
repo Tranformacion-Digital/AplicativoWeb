@@ -44,19 +44,22 @@ ChartJS.register(
 
 export default function LineChart({nameLine, scores, scores2, scores3, scores4, scores5, labels}) {
     const data = useMemo(function () {
+    const dataFack = [0]
       return {
         datasets: [
           {
-            label:!!nameLine && !!nameLine.name_1 ? nameLine.name_1 : 'no aplica',
-            data: scores,
+            label:!!nameLine && !!nameLine[0] && !!nameLine[0].name1 
+              ? nameLine[0].name1 : 'no aplica',
+            data: !!scores ? scores : dataFack,
             tension: 0.3,
             borderColor: "rgb(118, 213, 23)",
             pointRadius: 6,
             pointBackgroundColor: "rgb(118, 213, 23)",
           },
           {
-            label:!!nameLine && !!nameLine.name_2 ? nameLine.name_2 : 'no aplica',
-            data: scores2,
+            label: !!nameLine && !!nameLine[1] && !!nameLine[1].name2 
+              ? nameLine[1].name2 : 'no aplica',
+            data: !!scores2 ? scores2 : dataFack,
             tension: 0.3,
             borderColor: "rgb(213, 95, 23)",
             pointRadius: 6,
@@ -64,24 +67,27 @@ export default function LineChart({nameLine, scores, scores2, scores3, scores4, 
                        
           },
           {
-            label:!!nameLine && !!nameLine.name_3 ? nameLine.name_3 :'no aplica',
-            data: scores3,
+            label:!!nameLine && !!nameLine[2] && !!nameLine[2].name3 
+              ? nameLine[2].name3 :'no aplica',
+            data: !!scores3 ? scores3 : dataFack,
             tension: 0.3,
             borderColor: "rgb(23, 75, 213)",
             pointRadius: 6,
             pointBackgroundColor:  "rgb(23, 75, 213)",
           },
           {
-            label:!!nameLine && !!nameLine.name_4 ? nameLine.name_4 :'no aplica',
-            data: scores4,
+            label:!!nameLine && !!nameLine[3] && !!nameLine[3].name4 
+              ? nameLine[3].name4 :'no aplica',
+            data: !!scores4 ? scores4 : dataFack,
             tension: 0.3,
             borderColor: "rgb(213, 23, 66)",
             pointRadius: 6,
             pointBackgroundColor: "rgb(213, 23, 66)",
           },
           {
-            label:!!nameLine && !!nameLine.name_5 ? nameLine.name_5 :'no aplica',
-            data: scores5,
+            label:!!nameLine && !!nameLine[4] && !!nameLine[4].name5 
+              ? nameLine[4].name5:'no aplica',
+            data: !!scores5 ? scores5 : dataFack,
             tension: 0.3,
             borderColor: "rgb(204, 213, 23 )",
             pointRadius: 6,
@@ -90,7 +96,7 @@ export default function LineChart({nameLine, scores, scores2, scores3, scores4, 
         ],
         labels,
       };
-    }, [labels]);
+    }, [nameLine]);
   
     return (
       <div className="graphic-columns-container">

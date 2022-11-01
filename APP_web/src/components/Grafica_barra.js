@@ -57,7 +57,7 @@ export default function BarrChart({nameLine, scores}) {
         ],
         labels,
       };
-    }, []);
+    }, [scores]);
   
     return (
       <div className="graphic-columns-container">

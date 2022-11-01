@@ -9,20 +9,16 @@ const GraficaProceso = () => {
     const[serch, setSearch] = useState('')
     const[scores, setScores] = useState('')
     const[labels, setlabels] = useState('')
-    //let scores;
-   // let labels;// linea de tiempo
+
     let name ={
         name_1:'AL222',
-        // name_2:'name_2',
-        // name_3:'name_3',
-        // name_4:'name_4',
-        // name_5:'name_5'
     }
     useEffect(()=>{
         console.log('cambio',scores)
     },[scores])
 
     const searchLot = async () =>{
+        if(!serch)return
         await getRecordprocess(serch)
         .then(res=>{
             console.log('respuesta del backend',res)
@@ -31,7 +27,7 @@ const GraficaProceso = () => {
     }
 
     const dataSearch = (e) =>{
-        setSearch(e.target.value)
+            setSearch(e.target.value) 
     }
 
     return(
@@ -49,7 +45,9 @@ const GraficaProceso = () => {
                     <div className="graphic-info-container">
                         
                          <GraficaLinea
-                            nameLine={name}
+                            nameLine={[
+                                {"name1":!!scores && !!scores.lote ? scores.lote :''}
+                            ]}
                             scores={scores.datosTem}
                             labels={scores.dataTime}
                          />

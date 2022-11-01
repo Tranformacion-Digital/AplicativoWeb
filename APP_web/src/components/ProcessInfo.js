@@ -58,7 +58,7 @@ export const ProcessInfo = (dataProcess) => {
             <span className="container-info">
                 <p>Tiempo de porceso:</p>
                 <div className="box">
-                    {dataProces.intTotalTiempoProcess ? dataProces.intTotalTiempoProcess : 'Tiempo de porceso del Proceso'} Horas
+                    {(dataProces.intTotalTiempoProcess ? dataProces.intTotalTiempoProcess : 'Tiempo de proceso en')*10} Horas
                 </div>
             </span>
         </section>

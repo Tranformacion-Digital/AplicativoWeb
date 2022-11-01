@@ -2,7 +2,6 @@ import axios from 'axios';
 import moment from 'moment';
 
 export const getRecordprocess = (async (lote)  =>{
-    console.log('se hace las peticiones',lote);
     let mappData = {
         datosTem:[],
         dataTime:[],
@@ -26,11 +25,12 @@ export const getRecordprocess = (async (lote)  =>{
                 timeDelta=0;
                 mappData.dataTime.push(timeDelta)
             }else if(i < result.data.length){
-                let initTime= moment(result.data[i-1].time_proceso)
+                let initTime= moment(result.data[i-1].time_proceso)  
                 let endTime = moment(result.data[i].time_proceso)
-                timeDelta = (endTime.diff(initTime))/1000
+                timeDelta = (endTime.diff(initTime))/1000              
                 timeDelta = mappData.dataTime[i-1] + timeDelta;
                 mappData.dataTime.push(timeDelta)
+                
             }
             if(i===result.data.length) mappData.tiempoProceso = (mappData.dataTime[i-1])/60;
         }
@@ -64,6 +64,40 @@ export const getRecordprocess = (async (lote)  =>{
             mappData.rendimiento = result.data[0].Rendimiento_kg;
         }
     })
-    console.log('mappData',mappData);
     return mappData
+})
+
+export const bestPerformance = (async (data) =>{
+    let newData = [];
+    for(let i = 0; data.length>i; i++){
+        for(let j = 0; j < (data.length-i-1);j++){
+            if(data[j].Rendimiento_kg > data[j+1].Rendimiento_kg){
+                let temp = data[j];
+                data[j] = data[j+1]
+                data[j+1] = temp
+            }
+        }
+    }
+    for(let i = (data.length - 1); (data.length - 5) <= i; i--){
+        newData.push(data[i]);
+    }
+    return newData;
+})
+
+export const getProducPerformance = (async ()  =>{
+    let bestData
+    let dataProcess = [];
+    await axios.get(`https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/performance/`)
+    .then(resultado =>{
+        console.log('DATOS SIN ORDENAR',resultado.data)
+        dataProcess = resultado.data;
+        return dataProcess
+
+    })
+    await bestPerformance(dataProcess)
+        .then(resul =>{
+        bestData = resul
+        console.log('bestData',resul)
+    })
+    return bestData;
 })

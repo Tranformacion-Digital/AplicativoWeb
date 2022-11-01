@@ -26,11 +26,11 @@ const Header = () => {
                 </ul>
             </nav>
             <div className="header-menu">
-                <span className="header-menu--profile" onClick={handleToggle}>
+                {/* <span className="header-menu--profile" onClick={handleToggle}>
                     <p>Perfil</p>
                     <img src={Login} alt=""/>
                 </span>
-                {toggle && <li><a href="/">Cerrar Sesión</a></li>}
+                {toggle && <li><a href="/">Cerrar Sesión</a></li>} */}
             </div>
          </div>
     );
