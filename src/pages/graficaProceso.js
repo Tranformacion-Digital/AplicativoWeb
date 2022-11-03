@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import GraficaLinea from '../components/Grafica_Linea';
 import {ProcessInfo} from '../components/ProcessInfo';
 import {getRecordprocess} from '../services/services';
-import "../styles/graficaProceso.scss";
+import "../styles/GraficaProceso.scss";
 //import Lupa from '@Logos/lupa.png';
 
 const GraficaProceso = () => {

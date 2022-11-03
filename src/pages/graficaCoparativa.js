@@ -3,7 +3,7 @@ import GraficaLineaComponent from '../components/Grafica_Linea';
 import {ProcessInfo} from '../components/ProcessInfo';
 import {getRecordprocess} from '../services/services';
 import "../styles/GraficasComparativa.scss";
-import "../styles/graficaProceso.scss";
+import "../styles/GraficaProceso.scss";
 
 const GraficaComparativa = () => {	
     const [serchKeyIzq, setSerchkeyIzq]=useState('')
