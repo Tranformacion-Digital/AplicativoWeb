@@ -1,0 +1,58 @@
+@import 'vars';
+
+.performance-card{
+  width: 45%;
+  margin: 5px auto;
+  border-radius: 18px;
+  padding: 15px;
+  background-color: $color-box-primary;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.performance-card p{
+  width: 50%;
+  color: white;
+  font-size: 1.5rem;
+  text-align: left;
+  margin: 0% 0% 0% 0%;
+  padding: 0% 0% 0% 0%;
+}
+
+.item p{
+  width: 100%;
+  margin: 2% 2% 3% 3%;
+}
+
+.performance-card--title{
+  width: 200px;
+  color: $color-text;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.performance-card--data{
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+
+.box{
+  width: 65%;
+  height:74%;
+  display: flex;
+  align-items: center;
+  margin: 0% 0% 0% 0%;
+  border-radius: 5px;
+  border: solid 0.5px #707070;
+  background-color: $color-box-primary;
+  color: $color-text;
+}
+
+.container-info{
+  display: flex;
+  flex-direction: row;
+}

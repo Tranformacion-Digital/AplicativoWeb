@@ -1,0 +1,39 @@
+@import 'vars';
+.home--graphics-container{
+    width: 100%;
+    background-color: $color-background;
+    margin: 0% 0% 0% 0%;
+    padding:0% 0% 0% 0%;
+}
+ 
+.home--graphics-container h1{
+    color: #000000;
+    font-size: 2rem;
+    text-align: center;
+    margin: 2rem auto;
+    margin: 0% 0% 0% 0%;
+    padding:0% 0% 0% 0%;
+}
+
+.home-graphics{
+    width: 100%;
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.performance-container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0% 0% 0% 0%;
+    
+}
+
+.performance--cards-container{
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+    margin: 0% 0% 0% 0%;
+    gap: 1rem;
+  }

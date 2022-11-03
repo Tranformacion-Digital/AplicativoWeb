@@ -1,0 +1,87 @@
+@import 'vars';
+
+.header-container{
+  width: 100%;
+  display: flex;
+	justify-content: space-between;
+  padding: 0 24px;
+	border-bottom: 0.5px solid white;
+  background-color: $color-box-primary
+}
+
+.header-logo {
+  width: 4rem;
+  height: 5.82rem;
+  margin: auto;
+}
+
+.header-nav {
+  width: calc(100% - 9rem);
+  display: inline-flex;
+  justify-content: center;
+}
+
+.header-nav ul {
+	list-style: none;
+	display: inline-flex;
+  justify-content: center;
+	align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: auto;
+}
+
+.header-nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.6rem;
+}
+.header-nav ul li a:hover{
+	color: $color-line-hover
+} 
+
+.header-menu {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-menu--profile {
+  width: 100%;
+  margin: 0% 0% 0% -40%; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header-menu--profile p {
+  margin: 0 auto;
+  color: $color-text;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.header-menu--profile img {
+  width: 5rem;
+  height: 5rem; 
+}
+
+.header-menu li {
+  margin: 0 auto;
+  list-style: none;
+  text-align: center;
+  width: fit-content;
+}
+
+.header-menu  li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin: 0% 0% 0% -82%;
+}
+.header-menu li a:hover {
+   text-decoration: underline;
+}
