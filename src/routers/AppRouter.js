@@ -13,7 +13,7 @@ export const AppRouter = () => {
     <Router>
         <div>
             <Switch>
-                <Route exact path="/Home" component={Home}/>
+                <Route exact path="/" component={Home}/>
                 <Route exact path="/GraficaComparativa" component={GraficaComparativa}/>
                 <Route exact path="/GraficaProceso" component={GraficaProceso}/>
             </Switch>
