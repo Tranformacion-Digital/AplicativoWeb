@@ -1,8 +1,8 @@
 import axios from 'axios';
 import moment from 'moment';
 
-export const getRecordprocess = (async (lote)  =>{
-    let mappData = {
+export const getRecordProcess = (async (lote)  =>{
+    let mapData = {
         datosTem:[],
         dataTime:[],
         materiasPrimas:undefined,
@@ -12,30 +12,30 @@ export const getRecordprocess = (async (lote)  =>{
         rendimiento:undefined,
     }
 
-    let recordsprocess = "https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/recordsprocess/";
-    let chargerawmaterial = " https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/chargerawmaterial/";
-    let qualityproduct = " https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/qualityproduct/";
+    let recordProcess = "https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/recordsprocess/";
+    let chargerMaterial = " https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/chargerawmaterial/";
+    let qualityProduct = " https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/qualityproduct/";
     let performance = " https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/performance/";
-    await axios.get(`${recordsprocess}${lote}`)
+    await axios.get(`${recordProcess}${lote}`)
     .then(result=>{
         let timeDelta;
         for (let i = 0; i <= result.data.length; i++) {
-            if( result.data[i] && !!result.data[i].temperatura) mappData.datosTem.push(result.data[i].temperatura)
+            if( result.data[i] && !!result.data[i].temperatura) mapData.datosTem.push(result.data[i].temperatura)
             if(i === 0){
                 timeDelta=0;
-                mappData.dataTime.push(timeDelta)
+                mapData.dataTime.push(timeDelta)
             }else if(i < result.data.length){
                 let initTime= moment(result.data[i-1].time_proceso)  
                 let endTime = moment(result.data[i].time_proceso)
                 timeDelta = (endTime.diff(initTime))/1000              
-                timeDelta = mappData.dataTime[i-1] + timeDelta;
-                mappData.dataTime.push(timeDelta)
+                timeDelta = mapData.dataTime[i-1] + timeDelta;
+                mapData.dataTime.push(timeDelta)
                 
             }
-            if(i===result.data.length) mappData.tiempoProceso = (mappData.dataTime[i-1])/60;
+            if(i===result.data.length) mapData.tiempoProceso = (mapData.dataTime[i-1])/60;
         }
     })
-    await axios.get(`${chargerawmaterial}${lote}`)
+    await axios.get(`${chargerMaterial}${lote}`)
     .then(result =>{
         let materiasPrimas={
             responsable:'',
@@ -49,22 +49,22 @@ export const getRecordprocess = (async (lote)  =>{
             if( !materiasPrimas.acido && result.data[i].Materiaprima === "Acido") materiasPrimas.acido = result.data[i].catidad_kg;
             if( !materiasPrimas.metal && result.data[i].Materiaprima === "Metal") materiasPrimas.metal = result.data[i].catidad_kg;
         }
-        mappData.materiasPrimas = materiasPrimas;
+        mapData.materiasPrimas = materiasPrimas;
     })
-    await axios.get(`${qualityproduct}${lote}`)
+    await axios.get(`${qualityProduct}${lote}`)
     .then(result =>{
         if(!!result.data){
-            mappData.calidad = result.data[0].Quality;
-            mappData.lote = result.data[0].Lote;
+            mapData.calidad = result.data[0].Quality;
+            mapData.lote = result.data[0].Lote;
         }
     })
     await axios.get(`${performance}${lote}`)
     .then(result =>{
         if(!!result.data){
-            mappData.rendimiento = result.data[0].Rendimiento_kg;
+            mapData.rendimiento = result.data[0].Rendimiento_kg;
         }
     })
-    return mappData
+    return mapData
 })
 
 export const bestPerformance = (async (data) =>{
@@ -84,20 +84,20 @@ export const bestPerformance = (async (data) =>{
     return newData;
 })
 
-export const getProducPerformance = (async ()  =>{
+export const getProductPerformance = (async ()  =>{
     let bestData
     let dataProcess = [];
     await axios.get(`https://keb6atfcl0.execute-api.us-east-1.amazonaws.com/prueba/request-front/performance/`)
     .then(resultado =>{
-        console.log('DATOS SIN ORDENAR',resultado.data)
+        // console.log('DATOS SIN ORDENAR',resultado.data)
         dataProcess = resultado.data;
         return dataProcess
 
     })
     await bestPerformance(dataProcess)
-        .then(resul =>{
-        bestData = resul
-        console.log('bestData',resul)
+        .then(result =>{
+        bestData = result
+        // console.log('bestData',result)
     })
     return bestData;
 })

@@ -1,0 +1,48 @@
+@import 'vars';
+
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+img{
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+    color: $color-text;
+}
+
+.graphic{
+    width:  99%;
+    display: block;
+    border: solid 2px gray;
+    border-radius: 10px;
+    margin: 0.5rem auto;
+}
+
+.title{
+    text-align: center;
+    font-size: 2.8rem;
+    padding: 2rem;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
+input{
+    width: 24rem;
+    background-color: $color-box-primary;
+    border: solid 1px $color-line-box;
+    border-radius: 25px;
+    color: $color-text;
+    font-size: 1.6rem;
+    text-align: center;
+    padding: 0.5rem;
+}

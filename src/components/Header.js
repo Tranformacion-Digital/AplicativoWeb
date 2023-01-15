@@ -1,38 +1,34 @@
-import React, {useState} from "react";
-import UD from '../assets/icons/UD.png';
-import Login from '../assets/icons/user-icon.png';
+import React from "react";
+
+import logoUD from '../assets/icons/UD.png';
+// import { HiUserCircle } from 'react-icons/hi';
+
 import '../styles/Header.scss';
 
 const Header = () => {
+	// const [toggle, setToggle] = useState(false);
+	
+    // const handleToggle = () => {
+	// 	setToggle(!toggle);
+	// }
 
-	const [toggle, setToggle] = useState(false);
-	const handleToggle = () => {
-		setToggle(!toggle);
-	}
     return(
-        <div className="header-container"> 
-            <img className="header-logo" src={UD} alt="UD"/>
-            <nav className="header-nav">
-                <ul>
-                    <li>
-                        <a href="/">INICIO</a>
-                    </li>
-                    <li>
-                        <a href="/GraficaComparativa">GRAFICAS COMPARATIVAS</a>
-                    </li>
-                    <li>
-                        <a href="/GraficaProceso">GRAFICA DE PROCESO</a>
-                    </li>
-                </ul>
+        <div className="header"> 
+            <img className="header__logo" src={logoUD} alt="Universidad Distrital Francisco Jose de Caldas"/>
+            
+            <nav className="header__nav">
+                <a href="/">Home</a>
+                <a href="/ComparativeGraph">Comparative graph</a>
+                <a href="/ProcessGraph">Process graph</a>
             </nav>
-            <div className="header-menu">
-                {/* <span className="header-menu--profile" onClick={handleToggle}>
-                    <p>Perfil</p>
-                    <img src={Login} alt=""/>
+
+            {/* <div className="header__menu">
+                <span className="header__menu--profile" onClick={handleToggle}>
+                    <HiUserCircle />
                 </span>
-                {toggle && <li><a href="/">Cerrar Sesión</a></li>} */}
-            </div>
-         </div>
+                {toggle && <a className="header__menu--window" href="/">Cerrar Sesión</a>}
+            </div> */}
+        </div>
     );
 }
 

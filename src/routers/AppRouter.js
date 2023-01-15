@@ -1,23 +1,22 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import {Home} from '../pages/home';
-import GraficaComparativa from '../pages/graficaCoparativa';
-import GraficaProceso from '../pages/graficaProceso';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-export const AppRouter = () => {
+import Home from '../pages/Home';
+import ComparativeGraph from '../pages/ComparativeGraph';
+import ProcessGraph from '../pages/ProcessGraph';
+import NotFound from '../pages/NotFound'
+
+const AppRouter = () => {
   return (
     <Router>
-        <div>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/GraficaComparativa" component={GraficaComparativa}/>
-                <Route exact path="/GraficaProceso" component={GraficaProceso}/>
-            </Switch>
-        </div>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route exact path="/ComparativeGraph" component={ComparativeGraph} />
+        <Route exact path="/ProcessGraph" component={ProcessGraph} />
+        <Route path="*" component={NotFound} />
+      </Switch>
     </Router>
   );
 }
+
+export default AppRouter

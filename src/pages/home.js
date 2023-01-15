@@ -1,16 +1,16 @@
 import {useEffect, useState} from "react";
-import GraficaBarra from '../components/Grafica_barra';
-import GraficaLinea from '../components/Grafica_Linea';
-import ShowBestLote from '../components/showBestLote';
-import {getProducPerformance, getRecordprocess} from '../services/services';
-import {Header} from '../components/Header';
-import "../styles/home.scss";
 
- export const Home = () =>{
+import BarGraph from '../components/BarGraph';
+import LineGraph from '../components/LineGraph';
+import ShowBestLot from '../components/ShowBestLot';
+import { getProductPerformance, getRecordProcess } from '../services/services';
+import "../styles/Home.scss";
+
+const Home = () =>{
     const[scoresData, setScoresData] = useState('')
     const[bestLote, setBestLote] = useState('')
 
-    //GRAFICAS DE TEMPERATURA
+    //Gráficas de temperatura
     const[scoresData1, setScoresData1] = useState('')
     const[scoresData2, setScoresData2] = useState('')
     const[scoresData3, setScoresData3] = useState('')
@@ -18,18 +18,18 @@ import "../styles/home.scss";
     const[scoresData5, setScoresData5] = useState('')
 
     useEffect(()=>{
-        bestProduc() 
+        bestProduct() 
     },[])
 
     useEffect(()=>{
         getProcessTem()        
     },[bestLote])
 
-    const bestProduc = async () =>{
+    const bestProduct = async () =>{
         let bestLote = [];
         let bestLoteRendimiento = [];
-        let bestData = await getProducPerformance()
-        console.log('se hace la consulta de el mejor lote', bestData)
+        let bestData = await getProductPerformance()
+        // console.log('se hace la consulta de el mejor lote', bestData)
         setScoresData(bestData)
         bestData.forEach(item =>  {
             try {
@@ -44,53 +44,53 @@ import "../styles/home.scss";
         setBestLote(bestLote);
     }
     
-    const getProcessTem = async () =>{
+    const getProcessTem = async () => {
         if(!!bestLote){
             for (let index = 0; index < bestLote.length; index++) {
-                await getRecordprocess(bestLote[index])
+                await getRecordProcess(bestLote[index])
                 .then(resp => {
                     switch (index) {
                         case 0:
                             setScoresData1(resp);
-                            console.log('caso 1', resp)
+                            // console.log('caso 1', resp)
                             break;
                         case 1:
                             setScoresData2(resp);
-                            console.log('caso 2',resp)
+                            // console.log('caso 2',resp)
                             break;
                         case 2:
                             setScoresData3(resp);
-                            console.log('caso 3',resp)
+                            // console.log('caso 3',resp)
                             break;
                         case 3:
                             setScoresData4(resp);
-                            console.log('caso 4',resp)
+                            // console.log('caso 4',resp)
                             break;
                         case 4:
                             setScoresData5(resp);
-                            console.log('caso 5',resp)
+                            // console.log('caso 5',resp)
                             break;
                         default:
                             break;
                     }
                 })
             }
-            
         }
-
     }
 
     const scores = scoresData;
+
     return(
         <div>
-            <div className="home--graphics-container">
-			    <h1 className="graphics-title"> GRAFICAS COMPARATIVAS</h1>
-                <div className="home-graphics">
-                    <GraficaBarra
+            <div className="home__graphics">
+                <h2 className="title"> Comparative graph</h2>
+                <div className="home__graphics--container">
+                    <BarGraph
                         nameLine={"Los mejores 5 rendimientos"}
                         scores={scores}
                     /> 
-                    <GraficaLinea
+
+                    <LineGraph
                         nameLine={[
                             {"name1":scoresData1.lote},
                             {"name2":scoresData2.lote},
@@ -106,53 +106,59 @@ import "../styles/home.scss";
                         labels={scoresData3.dataTime}
                     /> 
                 </div>
-		    </div>
-            <div className="performance-container">
-            <h1>LOS MEJORES LOTES</h1>
-            <div className="performance--cards-container">
-                <ShowBestLote
-                    lote={scoresData1.lote}
-                    contenidoMetalico={scoresData1.calidad}
-                    timeProcess={!!scoresData1.tiempoProceso ? (scoresData1.tiempoProceso.toFixed(4)*10) :'' }
-                    NotPackaging={scoresData1.rendimiento}
-                    packaging={scoresData1.rendimiento - 5}
-                    bestLote={1}
-                />
-                <ShowBestLote
-                    lote={scoresData2.lote}
-                    contenidoMetalico={scoresData2.calidad}
-                    timeProcess={!!scoresData2.tiempoProceso ? scoresData2.tiempoProceso.toFixed(4)*10:'' }
-                    NotPackaging={scoresData2.rendimiento}
-                    packaging={scoresData2.rendimiento - 5}
-                    bestLote={2}
-                />
-                <ShowBestLote
-                    lote={scoresData3.lote}
-                    contenidoMetalico={scoresData3.calidad}
-                    timeProcess={!!scoresData3.tiempoProceso ? scoresData3.tiempoProceso.toFixed(4)*10:'' }
-                    NotPackaging={scoresData3.rendimiento}
-                    packaging={scoresData3.rendimiento - 5}
-                    bestLote={3}
-                />
-                <ShowBestLote
-                    lote={scoresData4.lote}
-                    contenidoMetalico={scoresData4.calidad}
-                    timeProcess={!!scoresData4.tiempoProceso ? scoresData4.tiempoProceso.toFixed(4) *10 : '' }
-                    NotPackaging={scoresData4.rendimiento}
-                    packaging={scoresData4.rendimiento - 5}
-                    bestLote={4}
-                />
-                <ShowBestLote
-                    lote={scoresData5.lote}
-                    contenidoMetalico={scoresData5.calidad}
-                    timeProcess={!!scoresData5.tiempoProceso ? scoresData5.tiempoProceso.toFixed(4) *10:''}
-                    NotPackaging={scoresData5.rendimiento}
-                    packaging={scoresData5.rendimiento - 5}
-                    bestLote={5}
-                />
             </div>
-        </div>
 
+            <div className="home__top5">
+                <h1 className="title">Best lotes</h1>
+                <div className="home__top5--container">
+                    <ShowBestLot
+                        lot={scoresData1.lote}
+                        quality={scoresData1.calidad}
+                        timeProcess={!!scoresData1.tiempoProceso ? (scoresData1.tiempoProceso.toFixed(4)*10) :'' }
+                        performance={scoresData1.rendimiento}
+                        // packaging={scoresData1.rendimiento - 5}
+                        bestLot={1}
+                    />
+
+                    <ShowBestLot
+                        lot={scoresData2.lote}
+                        quality={scoresData2.calidad}
+                        timeProcess={!!scoresData2.tiempoProceso ? scoresData2.tiempoProceso.toFixed(4)*10:'' }
+                        performance={scoresData2.rendimiento}
+                        // packaging={scoresData2.rendimiento - 5}
+                        bestLot={2}
+                    />
+
+                    <ShowBestLot
+                        lot={scoresData3.lote}
+                        quality={scoresData3.calidad}
+                        timeProcess={!!scoresData3.tiempoProceso ? scoresData3.tiempoProceso.toFixed(4)*10:'' }
+                        performance={scoresData3.rendimiento}
+                        // packaging={scoresData3.rendimiento - 5}
+                        bestLot={3}
+                    />
+
+                    <ShowBestLot
+                        lot={scoresData4.lote}
+                        quality={scoresData4.calidad}
+                        timeProcess={!!scoresData4.tiempoProceso ? scoresData4.tiempoProceso.toFixed(4) *10 : '' }
+                        performance={scoresData4.rendimiento}
+                        // packaging={scoresData4.rendimiento - 5}
+                        bestLot={4}
+                    />
+
+                    <ShowBestLot
+                        lot={scoresData5.lote}
+                        quality={scoresData5.calidad}
+                        timeProcess={!!scoresData5.tiempoProceso ? scoresData5.tiempoProceso.toFixed(4) *10:''}
+                        performance={scoresData5.rendimiento}
+                        // packaging={scoresData5.rendimiento - 5}
+                        bestLot={5}
+                    />
+                </div>
+            </div>
         </div>
     )
 }
+
+export default Home
