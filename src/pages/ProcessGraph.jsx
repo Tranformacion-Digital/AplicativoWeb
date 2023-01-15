@@ -2,9 +2,9 @@ import {useEffect, useState} from "react";
 
 import LineGraph from '../components/LineGraph';
 import ProcessInfo from '../components/ProcessInfo';
-import {getRecordProcess} from '../services/services';
+import {getRecordProcess} from '../services';
 
-import "../styles/ProcessGraph.scss";
+import "../styles/ProcessGraph.css";
 
 const ProcessGraph = () => {
     const[search, setSearch] = useState('')

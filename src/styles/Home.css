@@ -1,9 +1,7 @@
-@import 'vars';
-
 .home__graphics,
 .home__top5{
     width: 100%;
-    background-color: $color-background;
+    background-color: var(--color-background);
 }
 
 .home__graphics--container{
@@ -11,7 +9,6 @@
     min-width: 32rem;
     padding: 1rem auto;
     display: flex;
-    // flex-wrap: wrap;
     justify-content: center;
 }
 

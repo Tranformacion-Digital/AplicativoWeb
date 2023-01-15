@@ -1,9 +1,9 @@
 import React from "react";
 
-import logoUD from '../assets/icons/UD.png';
+import logoUD from '../assets/UD.png';
 // import { HiUserCircle } from 'react-icons/hi';
 
-import '../styles/Header.scss';
+import '../styles/Header.css';
 
 const Header = () => {
 	// const [toggle, setToggle] = useState(false);

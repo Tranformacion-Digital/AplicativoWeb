@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import '../styles/ProcessInfo.scss'
+import '../styles/ProcessInfo.css'
 
 const ProcessInfo = (data) => {
     const[dataProcess, setDataProcess]= useState('')

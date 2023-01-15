@@ -1,11 +1,9 @@
-@import 'vars';
-
 .info{
   width: min-content;
   margin: auto;
   border-radius: 20px;
   padding: 1rem;
-  background-color: $color-box-primary;
+  background-color: var(--color-box-primary);
   text-decoration: none;
   position: relative;
   display: flex;

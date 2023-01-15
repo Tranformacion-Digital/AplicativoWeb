@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import LineGraph from '../components/LineGraph';
 import ProcessInfo from '../components/ProcessInfo';
-import { getRecordProcess } from '../services/services';
-import "../styles/ComparativeGraph.scss";
+import { getRecordProcess } from '../services';
+import "../styles/ComparativeGraph.css";
 
 const GraphicComparative = () => {	
     const [searchKeyIzq, setSearchKeyIzq] = useState('')

@@ -1,22 +1,13 @@
-@import 'vars';
-
 .comparative{
     width: 100%;
     min-width: 32rem;
-    background-color: $color-background;
+    background-color: var(--color-background);
 }
 
 .comparative__container{
     width: 100%;
     display: flex;
     flex-direction: row;
-    // margin: 0% 0% 0% 0%;
-    // align-items: row;
-    // overflow-x: scroll;
-    // scroll-snap-type: x proximity;
-    // overscroll-behavior-x: contain;
-    // margin: 0 auto;
-    // gap: 1rem;
 }
 
 .comparative__info{
@@ -37,8 +28,8 @@
     width: 2.5rem;
     height: 2.5rem;
     border: 0;
-    background-image: url('../assets//icons/lupa.png');
-    background-color: $color-background;
+    background-image: url('../assets/lupa.png');
+    background-color: var(--color-background);
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -55,7 +46,6 @@
         width: 100%;
         display: flex;
         flex-direction: row;
-        // margin: 0% 0% 0% 0%;
         align-items: row;
         overflow-x: scroll;
         scroll-snap-type: x proximity;

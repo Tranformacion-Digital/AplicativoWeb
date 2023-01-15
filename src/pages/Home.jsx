@@ -3,8 +3,8 @@ import {useEffect, useState} from "react";
 import BarGraph from '../components/BarGraph';
 import LineGraph from '../components/LineGraph';
 import ShowBestLot from '../components/ShowBestLot';
-import { getProductPerformance, getRecordProcess } from '../services/services';
-import "../styles/Home.scss";
+import { getProductPerformance, getRecordProcess } from '../services';
+import "../styles/Home.css";
 
 const Home = () =>{
     const[scoresData, setScoresData] = useState('')

@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../styles/ShowBestLot.scss";
+import "../styles/ShowBestLot.css";
 
 const ShowBestLot = ({lot, quality, timeProcess, performance, bestLot}) => {  
     return (
